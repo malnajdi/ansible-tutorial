@@ -1,2 +1,7 @@
 [all]
 ansible-tutorial-1.malnajdi.com
+ansible-tutorial-2.malnajdi.com
+ansible-tutorial-3.malnajdi.com
+
+[all:vars]
+ansible_python_interpreter = /usr/bin/python3
