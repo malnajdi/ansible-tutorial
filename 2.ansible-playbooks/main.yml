@@ -1,0 +1,30 @@
+---
+  - name: Install & Configure Apache
+    hosts: all
+    user: root
+
+    pre_tasks:
+      - name: Update APT Cache
+        apt: update_cache=true cache_valid_time=3600
+
+      
+    handlers:
+      - name: Restart apache
+        service:
+          name: apache2
+          state: restarted
+    
+    tasks:
+      - name: Install Apache
+        apt: 
+          name: apache2
+          state: present
+
+      - name: Configure Apache
+        template:
+          src:  apache.conf.j2
+          dest: /etc/apache2/apache.conf
+          owner: root
+          group: root
+          mode: 0644
+        notify: Restart apache
