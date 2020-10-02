@@ -1,6 +1,14 @@
 [all]
 apache-1.malnajdi.com
 apache-2.malnajdi.com
+postgres-11-1.malnajdi.com
+
+[apache]
+apache-1.malnajdi.com
+apache-2.malnajdi.com
+
+[postgres]
+postgres-11-1.malnajdi.com
 
 [all:vars]
 ansible_python_interpreter = /usr/bin/python3

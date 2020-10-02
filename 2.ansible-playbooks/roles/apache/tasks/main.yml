@@ -1,0 +1,14 @@
+---
+- name: Install Apache
+  apt: 
+    name: apache2
+    state: present
+
+- name: Configure Apache
+  template:
+    src:  apache.conf.j2
+    dest: /etc/apache2/apache.conf
+    owner: root
+    group: root
+    mode: 0644
+  notify: Restart apache
