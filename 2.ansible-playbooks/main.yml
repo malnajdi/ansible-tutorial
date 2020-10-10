@@ -11,8 +11,8 @@
   roles:
     - role: apache
 
-- name: Postgresql
-  hosts: postgres
-  user: root
-  roles:
-    - role: postgres
+# - name: Postgresql
+#   hosts: postgres
+#   user: root
+#   roles:
+#     - role: postgres

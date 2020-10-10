@@ -1,13 +1,33 @@
 ---
-- name: Install Apache
+- name: Install Apache & Dependencies
   apt: 
-    name: apache2
+    name: ['apache2', 'python-passlib']
     state: present
 
 - name: Configure Apache
   template:
     src:  apache.conf.j2
     dest: /etc/apache2/apache.conf
+    owner: root
+    group: root
+    mode: 0644
+  notify: Restart apache
+
+- name: Add a user to a password file and ensure permissions are set
+  htpasswd:
+    path: "{{ apache_htpasswd_path }}"
+    name: "{{ item.username }}"
+    password: "{{ item.password }}"
+    owner: root
+    group: www-data
+    mode: 0640
+  loop: "{{ users }}"
+  no_log: True
+
+- name: Configure Default app
+  template:
+    src:  000-default.conf.j2
+    dest: /etc/apache2/sites-enabled/000-default.conf
     owner: root
     group: root
     mode: 0644
