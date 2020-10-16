@@ -1,0 +1,13 @@
+Port 22
+PermitRootLogin no
+AuthorizedKeysFile     /etc/ssh/authorized_keys/%u
+PasswordAuthentication no
+ChallengeResponseAuthentication no
+UsePAM yes
+X11Forwarding yes
+PrintMotd no
+UseDNS no
+AcceptEnv LANG LC_*
+
+# override default of no subsystems
+Subsystem sftp  /usr/lib/openssh/sftp-server

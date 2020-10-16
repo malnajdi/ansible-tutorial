@@ -5,11 +5,11 @@
   roles:
     - role: base
 
-- name: Apache
-  hosts: apache
-  user: root
-  roles:
-    - role: apache
+# - name: Apache
+#   hosts: apache
+#   user: root
+#   roles:
+#     - role: apache
 
 # - name: Postgresql
 #   hosts: postgres

@@ -1,0 +1,27 @@
+---
+- name: ssh - Install ssh
+  apt:
+    name: openssh-server
+    state: present
+
+- name: ssh - Create authorized_keys directory
+  file:
+    path: /etc/ssh/authorized_keys
+    state: directory
+    owner: root
+    group: root
+    mode: 0755
+
+- name: ssh - Configure ssh
+  template:
+    src: sshd_config.j2
+    dest: /etc/ssh/sshd_config
+    owner: root
+    group: root
+    mode: 0644
+  notify: ssh - reload
+
+- name: ssh - Ensure ssh is running
+  service:
+    name: sshd
+    state: started

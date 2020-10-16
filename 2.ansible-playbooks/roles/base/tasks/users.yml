@@ -1,0 +1,32 @@
+---
+- name: users - Load users
+  include_vars: users.yml
+
+- name: users - Create user
+  user:
+    name: "{{ item.username }}"
+  loop: "{{ users }}"
+  loop_control:
+    label: "{{ item.username }}"
+
+- name: users - Install user ssh keys
+  authorized_key:
+    user: "{{ item.username }}"
+    key: "{{ item.public_key }}"
+    state: present
+    exclusive: yes
+    path: "/etc/ssh/authorized_keys/{{ item.username }}"
+    manage_dir: no
+  loop: "{{ users }}"
+  loop_control:
+    label: "{{ item.username }}"
+
+- name: users - set ssh key file permissions
+  file:
+    path: "/etc/ssh/authorized_keys/{{ item.username }}"
+    owner: "{{ item.username }}"
+    group: "{{ item.username }}"
+    mode: 0400
+  loop: "{{ users }}"
+  loop_control:
+    label: "{{ item.username }}"
