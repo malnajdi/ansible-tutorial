@@ -1,0 +1,12 @@
+- name: Create New File
+  win_file:
+    path: C:\Users\malnajdi\Desktop\test.txt
+    state: touch
+
+- name: Ensure user bob is present
+  win_user:
+    name: bob
+    password: B0bP4ssw0rd
+    state: present
+    groups:
+      - Users

@@ -1,7 +1,7 @@
 ---
 - name: Baseline Configuration
-  hosts: all
-  user: root
+  hosts: windows_servers
+  user: malnajdi
   roles:
     - role: base
 

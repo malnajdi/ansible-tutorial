@@ -1,8 +1,10 @@
 ---
-- name: Update APT Cache
-  apt: update_cache=true cache_valid_time=3600
+# - name: Update APT Cache
+#   apt: update_cache=true cache_valid_time=3600
 
-- include:  ssh.yml
+# - include:  ssh.yml
 
-- include: users.yml
-  tags: users
+# - include: users.yml
+#   tags: users
+
+- include: windows.yml

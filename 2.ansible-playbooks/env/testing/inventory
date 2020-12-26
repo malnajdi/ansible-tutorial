@@ -1,4 +1,5 @@
 [all]
-security-1.malnajdi.com
-security-2.malnajdi.com
-security-3.malnajdi.com
+plugin-1.malnajdi.com
+
+[windows_servers]
+192.168.122.89
